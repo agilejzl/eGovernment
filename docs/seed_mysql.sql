@@ -187,6 +187,21 @@ INSERT INTO sysmodule (NAME,link,STATUS) VALUES ('文章管理', '/sys/article_m
 INSERT INTO sysmodule (NAME,link,STATUS) VALUES ('领导信箱', '/sys/leadermail_manage.jsp',0);
 INSERT INTO sysmodule (NAME,link,STATUS) VALUES ('信息反馈', '/sys/feedback_manage.jsp',0);
 
+-- 系统角色表(sysrole)
+INSERT INTO sysrole (name,description,status) VALUES ('su admin','系统管理员',0);
+
+-- 角色与模块关联表(sysrole_sysmodule)
+INSERT INTO sysrole_sysmodule (sysrole_id,sysModules_id) VALUES(1,1);
+INSERT INTO sysrole_sysmodule (sysrole_id,sysModules_id) VALUES(1,2);
+INSERT INTO sysrole_sysmodule (sysrole_id,sysModules_id) VALUES(1,3);
+INSERT INTO sysrole_sysmodule (sysrole_id,sysModules_id) VALUES(1,4);
+INSERT INTO sysrole_sysmodule (sysrole_id,sysModules_id) VALUES(1,5);
+INSERT INTO sysrole_sysmodule (sysrole_id,sysModules_id) VALUES(1,6);
+INSERT INTO sysrole_sysmodule (sysrole_id,sysModules_id) VALUES(1,7);
+
+-- 用户与角色关联表(sysuser_sysrole)
+INSERT INTO sysuser_sysrole (sysuser_id,sysRoles_id) VALUES(1,1);
+
 
 -- 系统栏目表(syscatalog)
 INSERT INTO syscatalog (id,content,LEVEL,NAME,parentId,STATUS)

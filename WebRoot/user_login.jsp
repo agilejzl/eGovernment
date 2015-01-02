@@ -75,8 +75,8 @@ body {
 						<input name="sysUser.name" type="text" class="input-large input-block-level" placeholder="用户名">
 						<input name="sysUser.pass" type="password" class="input-large input-block-level" placeholder="密码">
 						<!-- <label class="checkbox"> <input type="checkbox" value="remember-me"> 记住我</label> -->
-						<button class="btn btn-large btn-primary" style="margin-left: 40px;" type="submit">登录</button>
-						<button class="btn btn-large" style="margin-left: 40px;" type="reset">重置</button>
+						<button class="btn" style="margin-left: 40px;" type="reset">重置</button>
+						<button class="btn btn-primary" style="margin-left: 40px;" type="submit">登录</button>
 				</form>
 
 		</div>

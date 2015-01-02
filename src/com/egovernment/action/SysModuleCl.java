@@ -43,7 +43,7 @@ public class SysModuleCl extends ActionSupport implements RequestAware {
 		}
 		return INPUT;
 	}
-	
+
 	public String moduleDelete(){
 		sysModuleBiz.delete(sysModuleBiz.findOne("from SysModule where id =?",
 				sysModuleId));
