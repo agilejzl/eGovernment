@@ -7,7 +7,7 @@
 						<a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>
 				</p>
 				<p>
-						Copyright © 2015 <a href="mailto:agilejzl@gmail.com">Teddy Jiang</a> All rights reserved
+						Copyright © 2015 · <a href="mailto:agilejzl@gmail.com">Teddy Jiang</a> · All rights reserved
 				</p>
 		</div>
 </footer>

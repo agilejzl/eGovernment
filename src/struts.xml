@@ -8,6 +8,8 @@
 		<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
 		<constant name="struts.action.extension" value=",action"></constant>
 		<constant name="struts.action.excludePattern" value="/ckeditor.*" />
+		<constant name="struts.i18n.encoding" value="UTF-8"/>
+		<constant name="struts.locale" value="zh_CN"/>
 		<constant name="struts.devMode" value="true" />
 
 		<package name="default" namespace="/" extends="struts-default">
