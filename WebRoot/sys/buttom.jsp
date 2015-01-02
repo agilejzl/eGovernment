@@ -8,8 +8,7 @@
 								bootstrap</a>
 				</p>
 				<p>
-						Copyright copy © 2013 <a href="https://github.com/agilejzl<%=request.getContextPath()%>"
-								target="_blank">Teddy Jiang</a> All rights reserved
+						Copyright © 2013 <a href="mailto:agilejzl@gmail.com">Teddy Jiang</a> All rights reserved
 				</p>
 				<p>Email：agilejzl@gmail.com</p>
 		</div>
