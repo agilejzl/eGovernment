@@ -1,0 +1,37 @@
+[
+			{id:1, name:"无右键菜单 1", open:true, noR:true,
+				children:[
+					   {id:11, name:"节点 1-1", noR:true},
+					   {id:12, name:"节点 1-2", noR:true}
+
+				]},
+			{id:2, name:"右键操作 2", open:true,
+				children:[
+					   {id:21, name:"节点 2-1"},
+					   {id:22, name:"节点 2-2"},
+					   {id:23, name:"节点 2-3"},
+					   {id:24, name:"节点 2-4"}
+				]},
+			{id:3, name:"右键操作 3", open:true,
+				children:[
+					   {id:31, name:"节点 3-1"},
+					   {id:32, name:"节点 3-2"},
+					   {id:33, name:"节点 3-3"},
+					   {id:34, name:"节点 3-4"}
+				]},
+				
+				{id:100000, name:"廊坊银行总行", open:true, 
+					children:[
+							{id:110000, name:"廊坊分行", open:true, 
+							children:[
+									{id:111000, name:"廊坊银行金光道支行"},
+									{id:112000, name:"廊坊银行解放道支行", open:true, 
+									children:[
+											{id:112100, name:"廊坊银行广阳道支行"},
+											{id:112200, name:"廊坊银行三大街支行"}
+									]},
+									{id:113000, name:"廊坊银行开发区支行"}
+							]}
+					]}
+				
+]
