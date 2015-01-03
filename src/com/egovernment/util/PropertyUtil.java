@@ -11,7 +11,7 @@ import java.util.Properties;
  */
 public class PropertyUtil {
 	private static final String PLACEHOLDER_START = "${";
-	private static String FILE_PATH = "app_config.properties";
+	private static final String FILE_PATH = "app_config.properties";
 	private static Properties pro;
 
 	public static String get(String key) {

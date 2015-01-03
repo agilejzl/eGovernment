@@ -109,7 +109,7 @@
 				<property name="feedbackBiz" ref="feedbackBiz"></property>
 				<property name="sysCatalogBiz" ref="sysCatalogBiz"></property>
 		</bean>
-		<!-- <bean id="hibernetTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate"> 
+		<!-- <bean id="hibernetTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 				<property name="sessionFactory" ref="sessionFactory"></property> </bean> -->
 
 		<!-- index -->
