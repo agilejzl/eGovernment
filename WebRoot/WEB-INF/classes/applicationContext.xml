@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+		<bean id="sessionFactory"
+				class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+				<!-- <property name="dataSource" ref="dataSource" /> -->
+				<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		</bean>
+
+		<bean id="baseDao" class="com.egovernment.dao.impl.BaseDaoImpl">
+				<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+
+		<!-- sysUser -->
+		<bean id="sysUserDao" parent="baseDao"
+				class="com.egovernment.dao.impl.SysUserDaoImpl">
+				<!-- <property name="sessionFactory" ref="sessionFactory" /> -->
+		</bean>
+
+		<bean id="sysUserBiz" class="com.egovernment.biz.impl.SysUserBizImpl">
+				<property name="sysUserDao" ref="sysUserDao"></property>
+		</bean>
+
+		<bean id="sysUserCl" class="com.egovernment.action.SysUserCl">
+				<property name="sysUserBiz" ref="sysUserBiz"></property>
+				<property name="sysRoleBiz" ref="sysRoleBiz"></property>
+		</bean>
+
+		<!-- sysRole -->
+		<bean id="sysRoleDao" parent="baseDao"
+				class="com.egovernment.dao.impl.SysRoleDaoImpl">
+		</bean>
+
+		<bean id="sysRoleBiz" class="com.egovernment.biz.impl.SysRoleBizImpl">
+				<property name="sysRoleDao" ref="sysRoleDao"></property>
+		</bean>
+
+		<bean id="sysRoleCl" class="com.egovernment.action.SysRoleCl">
+				<property name="sysRoleBiz" ref="sysRoleBiz"></property>
+				<property name="sysModuleBiz" ref="sysModuleBiz"></property>
+		</bean>
+
+		<!-- sysModule -->
+		<bean id="sysModuleDao" parent="baseDao"
+				class="com.egovernment.dao.impl.SysModuleDaoImpl">
+		</bean>
+
+		<bean id="sysModuleBiz" class="com.egovernment.biz.impl.SysModuleBizImpl">
+				<property name="sysModuleDao" ref="sysModuleDao"></property>
+		</bean>
+
+		<bean id="sysModuleCl" class="com.egovernment.action.SysModuleCl">
+				<property name="sysModuleBiz" ref="sysModuleBiz"></property>
+		</bean>
+
+		<!-- sysCatalog -->
+		<bean id="sysCatalogDao" parent="baseDao"
+				class="com.egovernment.dao.impl.SysCatalogDaoImpl">
+		</bean>
+
+		<bean id="sysCatalogBiz" class="com.egovernment.biz.impl.SysCatalogBizImpl">
+				<property name="sysCatalogDao" ref="sysCatalogDao"></property>
+		</bean>
+
+		<bean id="sysCatalogCl" class="com.egovernment.action.SysCatalogCl">
+				<property name="sysCatalogBiz" ref="sysCatalogBiz"></property>
+		</bean>
+
+		<!-- Article -->
+		<bean id="articleDao" parent="baseDao"
+				class="com.egovernment.dao.impl.ArticleDaoImpl">
+		</bean>
+
+		<bean id="articleBiz" class="com.egovernment.biz.impl.ArticleBizImpl">
+				<property name="articleDao" ref="articleDao"></property>
+		</bean>
+
+		<bean id="articleCl" class="com.egovernment.action.ArticleCl">
+				<property name="articleBiz" ref="articleBiz"></property>
+		</bean>
+
+		<!-- Leader -->
+		<bean id="leaderDao" parent="baseDao"
+				class="com.egovernment.dao.impl.LeaderDaoImpl">
+		</bean>
+
+		<bean id="leaderBiz" class="com.egovernment.biz.impl.LeaderBizImpl">
+				<property name="leaderDao" ref="leaderDao"></property>
+		</bean>
+
+		<bean id="leaderCl" class="com.egovernment.action.LeaderCl">
+				<property name="leaderBiz" ref="leaderBiz"></property>
+		</bean>
+
+		<!-- Feedback -->
+		<bean id="feedbackDao" parent="baseDao"
+				class="com.egovernment.dao.impl.FeedbackDaoImpl">
+		</bean>
+
+		<bean id="feedbackBiz" class="com.egovernment.biz.impl.FeedbackBizImpl">
+				<property name="feedbackDao" ref="feedbackDao"></property>
+		</bean>
+
+		<bean id="feedbackCl" class="com.egovernment.action.FeedbackCl">
+				<property name="feedbackBiz" ref="feedbackBiz"></property>
+				<property name="sysCatalogBiz" ref="sysCatalogBiz"></property>
+		</bean>
+		<!-- <bean id="hibernetTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+				<property name="sessionFactory" ref="sessionFactory"></property> </bean> -->
+
+		<!-- index -->
+		<bean id="indexCl" class="com.egovernment.action.IndexCl">
+				<property name="articleBiz" ref="articleBiz"></property>
+				<property name="sysCatalogBiz" ref="sysCatalogBiz"></property>
+		</bean>
+</beans>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.action.extension" value=",action"></constant>
+	<constant name="struts.action.excludePattern" value="/ckeditor.*" />
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.locale" value="zh_CN"/>
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<default-action-ref name="index" />
+
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" result="error" />
+		</global-exception-mappings>
+
+		<!-- <action name="index"> <result>/index.jsp</result> </action> -->
+		<action name="index" method="index" class="indexCl">
+			<result name="success">/view/index.jsp</result>
+		</action>
+
+		<!-- <action name="*.jsp"> <result name="success">/{1}.jsp</result> </action> -->
+	</package>
+
+	<package name="view" namespace="/view" extends="struts-default">
+		<default-action-ref name="index" />
+
+		<action name="index" method="index" class="indexCl">
+			<result name="success">/view/index.jsp</result>
+		</action>
+
+		<action name="article_get" method="articleGet" class="articleCl">
+			<result name="success">/view/article.jsp</result>
+		</action>
+
+		<action name="catalog_get" method="catalogChildren" class="sysCatalogCl">
+			<result name="success">/view/catalog.jsp</result>
+		</action>
+
+		<action name="list_article" method="articleList" class="articleCl">
+			<result name="success">/view/article_list.jsp</result>
+		</action>
+
+		<action name="children_catalog" method="catalogChildren" class="sysCatalogCl">
+			<result name="success">/view/catalog_children.jsp</result>
+		</action>
+	</package>
+
+	<package name="sys" namespace="/sys" extends="struts-default">
+		<default-action-ref name="index" />
+
+		<action name="index" method="index" class="sysUserCl">
+			<result name="success">/sys/index.jsp</result>
+		</action>
+
+		<action name="user_register" method="userRegister" class="sysUserCl">
+			<result name="success" type="redirect">/sys/index.jsp</result>
+			<result name="input">/user_login.jsp</result>
+		</action>
+
+		<action name="user_add" method="userRegister" class="sysUserCl">
+			<result name="success" type="redirectAction">user_list</result>
+			<result name="input" type="redirectAction">user_list</result>
+		</action>
+
+		<action name="user_view" method="userView" class="sysUserCl">
+			<result name="success">/sys/modal/user_view_modal.jsp</result>
+		</action>
+
+		<action name="user_edit" method="userView" class="sysUserCl">
+			<result name="success">/sys/modal/user_edit_modal.jsp</result>
+		</action>
+
+		<action name="user_update" method="userUpdate" class="sysUserCl">
+			<result name="success" type="redirectAction">user_list</result>
+		</action>
+
+		<action name="user_delete" method="userDelete" class="sysUserCl">
+			<result name="success" type="redirectAction">user_list</result>
+		</action>
+
+		<action name="user_delete_batch" method="userDeleteBatch" class="sysUserCl">
+			<result name="success" type="redirectAction">user_list</result>
+		</action>
+
+		<action name="user_login" method="userLogin" class="sysUserCl">
+			<result name="success" type="redirect">/sys/index.jsp</result>
+			<result name="input">/user_login.jsp</result>
+		</action>
+
+		<action name="user_logout" method="userLogout" class="sysUserCl">
+			<result name="success" type="redirect">/view/index.jsp</result>
+		</action>
+
+		<action name="user_list" method="userList" class="sysUserCl">
+			<result name="success">/sys/user_manage.jsp</result>
+		</action>
+
+		<action name="user_manage" method="userList" class="sysUserCl">
+			<result name="success">/sys/user_manage.jsp</result>
+		</action>
+
+		<!-- <action name="user_add" method="userAdd" class="sysUserCl"> <result
+				 name="success" >/sys/user_manage.jsp</result> </action> -->
+
+		<action name="module_manage" method="moduleList" class="sysModuleCl">
+			<result name="success">/sys/module_manage.jsp</result>
+		</action>
+
+		<action name="module_add" method="moduleAdd" class="sysModuleCl">
+			<result name="success" type="redirectAction">module_manage</result>
+		</action>
+
+		<action name="module_delete" method="moduleDelete" class="sysModuleCl">
+			<result name="success" type="redirectAction">module_manage</result>
+		</action>
+
+		<action name="role_manage" method="roleList" class="sysRoleCl">
+			<result name="success">/sys/role_manage.jsp</result>
+		</action>
+
+		<action name="role_add" method="roleAdd" class="sysRoleCl">
+			<result name="success" type="redirectAction">role_manage</result>
+		</action>
+
+		<action name="role_delete" method="roleDelete" class="sysRoleCl">
+			<result name="success" type="redirectAction">role_manage</result>
+		</action>
+
+		<action name="role_edit" method="roleView" class="sysRoleCl">
+			<result name="success">/sys/modal/role_edit_modal.jsp</result>
+		</action>
+
+		<action name="role_update" method="roleUpdate" class="sysRoleCl">
+			<result name="success" type="redirectAction">role_manage</result>
+		</action>
+
+		<action name="catalog_add" method="catalogAdd" class="sysCatalogCl">
+			<result name="success" type="redirect">/sys/catalog_manage.jsp</result>
+		</action>
+
+		<action name="catalog_delete" method="catalogDelete" class="sysCatalogCl">
+			<result name="success" type="redirect">/sys/catalog_manage.jsp</result>
+		</action>
+
+		<action name="catalog_list" method="catalogList" class="sysCatalogCl">
+			<result name="success">/sys/catalog_manage.jsp</result>
+		</action>
+
+		<action name="catalog_children" method="catalogChildren" class="sysCatalogCl">
+			<result name="success">/sys/catalog_children.jsp</result>
+		</action>
+
+		<action name="article_add" method="articleAdd" class="articleCl">
+			<result name="success" type="redirect">/sys/article_manage.jsp</result>
+		</action>
+
+		<action name="article_delete" method="articleDelete" class="articleCl">
+			<result name="success" type="redirect">/sys/article_manage.jsp</result>
+		</action>
+
+		<action name="article_list" method="articleList" class="articleCl">
+			<result name="success">/sys/article_list.jsp</result>
+		</action>
+
+		<action name="leader_sort_list" method="leaderSortList" class="leaderCl">
+			<result name="success">/sys/leader_sort.jsp</result>
+		</action>
+
+		<action name="leader_list" method="leaderList" class="leaderCl">
+			<result name="success">/sys/leader_list.jsp</result>
+		</action>
+
+		<action name="feedback_sort_list" method="feedbackSortList" class="feedbackCl">
+			<result name="success">/sys/feedback_sort.jsp</result>
+		</action>
+
+		<action name="feedback_list" method="feedbackList" class="feedbackCl">
+			<result name="success">/sys/feedback_list.jsp</result>
+		</action>
+
+		<!-- <action name="sys/*.jsp"> <result name="success">/sys/{1}.jsp</result> </action> -->
+	</package>
+</struts>
